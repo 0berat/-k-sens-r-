@@ -1,0 +1,29 @@
+const int trig = 5 ;
+const int echo = 4  ;
+float sure;
+float mesafe;
+
+
+void setup() {
+  pinMode(trig,OUTPUT);
+  pinMode(echo,INPUT);
+
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(1000);
+  digitalWrite(trig,LOW);
+  sure = pulseIn(echo,HIGH);
+  mesafe = (sure/2)/29.1;     //Ortama göre değer değişebilir. Hassas ölçüm istersen!
+
+  Serial.print("cisme olan uzaklık = ");
+  Serial.println(mesafe);
+  Serial.println("cm");
+  Serial.println("----------------");
+  delay(500);
+  //Serial.print("----------------")
+  // denemek için print ve println arasında ne fark var?
+}
